@@ -107,3 +107,16 @@
     text-overflow: ellipsis;
     color:white
 }
+
+.help{
+    opacity:0.5;
+    color: white; 
+    /* Set the default color for the text */
+    mix-blend-mode: difference; /* Blend mode to achieve the inverse effect */
+    /* filter: brightness(500%); */
+    font-size:2em;
+    position:fixed;
+    left:50%;
+    top:10%;
+    transform: translateX(-50%);
+}

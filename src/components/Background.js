@@ -25,6 +25,12 @@ function Background({ info, getTimeUntilNext, setInfo, nextBg, setNextBg,darken 
   const [bgtoUse, setBgtoUse] = useState(0);
   const [style, setStyle] = useState({});
   useEffect(() => {
+    for (var i of bgArray){
+      const img = new Image();
+      img.src = i;
+    }
+  },[])
+  useEffect(() => {
     if (!nextBg) return;
     console.log(nextBg);
     if (nextBg === "fade") {

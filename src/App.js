@@ -182,7 +182,6 @@ function App() {
 
       if (mainInfo["x"] > 0 || (subInfo!==null && !collided)) return;
       if (!start) {
-        music.play();
         const startmoments = (moments,delay) => {for (var j= 0; j < moments.length; j++) { 
           const toRun = moments[j][1];
           setTimeout(() => {
@@ -415,8 +414,11 @@ function App() {
 
         }],
         ]
-        startmoments(importantMoments,100)
-        setStart(true);
+        music.play();
+        music.addEventListener("play", ()=>{
+          startmoments(importantMoments,100)
+          setStart(true);
+        });
         return;
       }
       if (music.currentTime >= 15.731 && getCurrentPt.current()<23) callSub.current();
@@ -453,7 +455,7 @@ function App() {
       ) : null}
       <Ground info={groundInfo} setInfo={setGroundInfo}/>
       <label className="momentum">p = {Math.round(mainInfo["m"]*mainInfo["vx"])} Ns</label>
-
+      <label className="help">{start?"Click to view next Note":"Press Click to Begin"}</label>
     </div>
   );
 }
