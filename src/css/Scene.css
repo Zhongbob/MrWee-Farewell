@@ -118,4 +118,5 @@
     left:50%;
     top:10%;
     transform: translateX(-50%);
+    transition: opacity 1s ease-in-out;
 }

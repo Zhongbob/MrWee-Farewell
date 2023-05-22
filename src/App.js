@@ -34,7 +34,7 @@ const peopleData = [
 {'title': 'TAN IK KAI AYDEN', 'desc': 'Thanks Mr Wee for being such a great teacher! Ur singing is so nice HAHAHA. Thanks for always entertaining us in class and making our lessons fun with all your stories. Atb for ur future endeavours and hope u have fun in life.'},
 {'title': 'TAN YI JUN', 'desc': "Just wanted to say a big thank you! You turned the complicated stuff into something we could actually get. As you head off to new stuff, remember you've made a difference here. Good luck with whatever's next!"},
 {'title': 'WANG TING AN', 'desc': 'Hi Mr Wee, you give me the impression of the kind of humorous university lecturer that only exist in movies. I really enjoys our lesson and I sincerely thank you for giving me an amazing introduction to H2 physics. \nps. Sorry I occasionally sleep in your lesson, the lesson just so happens to always be in early morning 🙏'},
-{'title':"CLASS MESSAGE",'desc': 'Thank you for guiding our class for the past half a year. Though only half a year has passed, your humour, teachings, sense of humour and your willingness to engage in class conversations even after class have left a lasting impression on us. You have shown deep enjoyment and excitement in physics, making lessons more fun that it would have otherwise been. Thank you, and all the best in your future endeavours!<br>Best Regards,<br>23J17',m:10000000000000000000000000},
+{'title':"CLASS MESSAGE",'desc': 'Thank you for guiding our class for the past half a year. Though only half a year has passed, your humour, teachings, sense of humour and your willingness to engage in class conversations even after class have left a lasting impression on us. You have shown deep enjoyment and excitement in physics, making lessons more fun that it would have otherwise been. Thank you, and all the best in your future endeavours!\nBest Regards,\n23J17',m:10000000000000000000000000},
 {'title': 'Thank you, Mr Wee', 'desc': '',m:10000000000000000000000000}
 ]
 
@@ -182,57 +182,79 @@ function App() {
 
       if (mainInfo["x"] > 0 || (subInfo!==null && !collided)) return;
       if (!start) {
-        const startmoments = (moments,delay) => {for (var j= 0; j < moments.length; j++) { 
-          const toRun = moments[j][1];
+        const startmoments = (moments,delay,cur,startPt) => {
+          if (cur === moments.length) return;
+          cur = cur ?? 0;
+          startPt = startPt ?? new Date().getTime();
+          const dif = new Date().getTime() - startPt;
+          console.log(cur===0?moments[cur][0]+delay:moments[cur][0]-moments[cur-1][0])
           setTimeout(() => {
-            toRun();
-          }, moments[j][0]+delay);
-        }}
+            console.log(moments[cur][1])
+            moments[cur][1]();
+            startmoments(moments,delay,cur+1,startPt)
+          }, cur===0?moments[cur][0]+delay:moments[cur][0]-dif+delay);
+        //   for (var j= 0; j < moments.length; j++) { 
+        //   const toRun = moments[j][1];
+        //   setTimeout(() => {
+        //     toRun();
+        //   }, moments[j][0]+delay);
+        // }
+      }
         const rapidBeats1 = ()=>{
           // so so xu
-          setNextBg("instant")
-          setTimeout(()=>{setNextBg("instant")},214.25)
-          setTimeout(()=>{setNextBg("instant")},642.75)
+          const newlst = [[0,()=>{setNextBg("instant")}],[214.25,()=>{setNextBg("instant")}],[642.75,()=>{setNextBg("instant")}]]
+          startmoments(newlst,0)
         }
         const rapidBeats2 = ()=>{
-          setNextBg("instant")
-          setTimeout(()=>{setNextBg("instant")},214.25)
-          setTimeout(()=>{setNextBg("instant")},642.75)
-          setTimeout(()=>{setNextBg("instant")},1071.25)
+          const newlst = [[0,()=>{setNextBg("instant")}],[214.25,()=>{setNextBg("instant")}],[642.75,()=>{setNextBg("instant")}],[1071.25,()=>{setNextBg("instant")}]]
+          startmoments(newlst,0)
+          // setNextBg("instant")
+          // setTimeout(()=>{setNextBg("instant")},214.25)
+          // setTimeout(()=>{setNextBg("instant")},642.75)
+          // setTimeout(()=>{setNextBg("instant")},1071.25)
         }
         const halfBeats = (count,type)=>{
           type = type ?? "instant"
+          const newlst = []
           for (var i = 0; i < count; i++) {
-            setTimeout(()=>{setNextBg(type)},i*214.25);
+            newlst.push ([i*214.25,()=>{setNextBg(type)}]);
           }
+          startmoments(newlst,0)
         }
 
         const wholeBeats = (count,type)=>{
           type = type ?? "instant"
+          const newlst = []
           for (var i = 0; i < count; i++) {
-            setTimeout(()=>{setNextBg(type)},i*428.5);
+            newlst.push([i*428.5,()=>{setNextBg(type)}]);
           }
-          
+          startmoments(newlst,0)
         }
         const doubleBeats = (count,type)=>{
           type = type ?? "instant"
+          const newlst = []
           for (var i = 0; i < count; i++) {
-            setTimeout(()=>{setNextBg(type)},i*857);
+            newlst.push([i*857,()=>{setNextBg(type)}]);
           }
+          startmoments(newlst,0)
           
         }
         const barBeats = (count,type)=>{
           type = type ?? "instant"
+          const newlst = []
           for (var i = 0; i < count; i++) {
-            setTimeout(()=>{setNextBg(type)},i*1714);
+            newlst.push([i*1714,()=>{setNextBg(type)}]);
           }
+          startmoments(newlst,0)
           
         }
         const doubleBarBeats = (count,type)=>{
           type = type ?? "instant"
+          const newlst = []
           for (var i = 0; i < count; i++) {
-            setTimeout(()=>{setNextBg(type)},i*3428);
+            newlst.push([i*3428,()=>{setNextBg(type)}]);
           }
+          startmoments(newlst,0)
           
         }
         const interlude1Moments = [
@@ -457,7 +479,7 @@ function App() {
       ) : null}
       <Ground info={groundInfo} setInfo={setGroundInfo}/>
       <label className="momentum">p = {Math.round(mainInfo["m"]*mainInfo["vx"])} Ns</label>
-      <label className="help">{start?"Click to view next Note":"Press Click to Begin"}</label>
+      <label className="help" style = {stop?{opacity:"0"}:{}}>{start?"Click to view next Note":"Press Click to Begin"}</label>
     </div>
   );
 }
