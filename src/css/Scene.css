@@ -46,7 +46,6 @@
 .message p{
     overflow: auto;
     height:80%;
-    white-space: pre;
 }
 .background{
     display:flex;
