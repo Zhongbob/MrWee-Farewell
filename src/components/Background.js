@@ -12,8 +12,15 @@ import bg10 from "../assets/bg10.jpg";
 import bg11 from "../assets/bg11.jpg";
 import bg12 from "../assets/bg12.jpg";
 import bg13 from "../assets/bg13.jpg";
+import bg14 from "../assets/bg14.jpg";
+import bg15 from "../assets/bg15.jpg";
+import bg16 from "../assets/bg16.jpg";
+import bg17 from "../assets/bg17.jpg";
+import bg18 from "../assets/bg18.jpg";
+import bg19 from "../assets/bg18.jpg";
+
 import final from "../assets/finalbg.png";
-const bgArray = [bg1, bg2, bg3, bg4, bg5, bg6, bg7,bg8,bg9,bg10,bg11,bg12,bg13,final];
+const bgArray = [bg1, bg2, bg3, bg4, bg5, bg6, bg7,bg8,bg9,bg10,bg11,bg12,bg13,bg14,bg15,bg16,bg17,bg18,bg19,final];
 
 function Background({ info, getTimeUntilNext, setInfo, nextBg, setNextBg,darken }) {
   const backgroundRef1 = useRef(null);
@@ -28,7 +35,9 @@ function Background({ info, getTimeUntilNext, setInfo, nextBg, setNextBg,darken 
     for (var i of bgArray){
       const img = new Image();
       img.src = i;
+      
     }
+    
   },[])
   useEffect(() => {
     if (!nextBg) return;

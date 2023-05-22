@@ -414,11 +414,13 @@ function App() {
 
         }],
         ]
-        music.play();
-        music.addEventListener("play", ()=>{
+        const startthing = function(){
           startmoments(importantMoments,100)
           setStart(true);
-        });
+          music.removeEventListener("playing",startthing)
+        };
+        music.addEventListener("playing", startthing)
+        music.play();
         return;
       }
       if (music.currentTime >= 15.731 && getCurrentPt.current()<23) callSub.current();
