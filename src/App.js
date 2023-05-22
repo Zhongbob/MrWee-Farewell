@@ -17,7 +17,7 @@ const peopleData = [
 {'title': 'DAPHNE CHIA MIN HUI', 'desc': 'hi mr wee thanks for being an amazing physics teacher i really enjoyed your lessons and all the best in your new school!!!'},
 {'title': 'GOH ROU HUI ASHLEY', 'desc': 'Thank you Mr Wee, for guiding us so far this year. The jokes you made in class were always a good wake up call and brought much laughter to class. Thank you for bringing us a whole new experience in physics lessons and good luck in your next school. Hopefully you’ll get a class you won’t have to call girls and boys ._.'},
 {'title': 'NG SHI QING, EUGENIA', 'desc': 'Hello Mr Wee, thank you for being an amazing physics teacher and always being willing to deal with our shenanigans. Your lessons are always so funny but yet taught in a way that everybody can understand. I wish you all the best in your new school and pls don’t forget us TvT\n\np.s. don’t worry, i’ll disturb you via whatsapp to find out which school you’re teaching hehehe'},
-{'title': 'SELINA THEN SHI MIIN', 'desc': 'hello mr wee'},
+{'title': 'SELINA THEN SHI MIIN', 'desc': 'Hello Mr Wee, thank you for being the best physics cher I ever had in my school life. They said "The best teachers are the ones who make the subject entertaining and fun.”, and they arent wrong. Not only did you make class so lively and humorous, but we also got to learn and understand the complex topics easily, which is something I haven’t experienced in a long time. All the best in your new school!'},
 {'title': 'TOH YUEN HUI', 'desc': "hi mr wee, thanks for being an amazing physics teacher. you really made lessons very entertaining and made physics a fun subject to learn. i wish you all the best in your new school. please don't forget us"},
 {'title': 'YEO SU GAR', 'desc': 'thank you mr wee for being so entertaining and making lessons fun and interesting for us while helping us learn. you may not be a good physics teacher (your words not mine) but you were the best physics teacher i’ve had in RV! all the best in your mystery school sayonara'},
 {'title': 'ZHANG HUIXIN', 'desc': 'Hi Mr Wee, thank you for looking our for me and helping me in physics haha meeting me kinda last minute for consult and all :D Thanks to you I’ve become more confident in kinematics! >\\/< Thank you and all the best in your new school!! 😀'},
@@ -366,7 +366,7 @@ function App() {
             doubleBarBeats(4,"fade")
           }],
           [15505,()=>{
-            if (getCurrentPt.current() < 23){
+            if (getCurrentPt.current() < 24){
               console.log("Looping")
               music.currentTime = 154459/1000
               startmoments(interlude2Moments,-100)
@@ -423,7 +423,7 @@ function App() {
         music.play();
         return;
       }
-      if (music.currentTime >= 15.731 && getCurrentPt.current()<23) callSub.current();
+      if (music.currentTime >= 15.731 && getCurrentPt.current()<24) callSub.current();
     };
     document.addEventListener("click", clickHandler);
     return () => document.removeEventListener("click", clickHandler);
