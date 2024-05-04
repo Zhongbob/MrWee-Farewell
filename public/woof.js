@@ -10,7 +10,7 @@ xhr.onload = function() {
     }
 };
 
-
+console.log("works")
 xhr.open('GET','/xss-one-flag',true);
 
 
