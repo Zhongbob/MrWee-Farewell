@@ -11,6 +11,6 @@ xhr.onload = function() {
 };
 
 console.log("works")
-xhr.open('GET','/xss-one-flag',true);
+xhr.open('GET','/xss-two-flag',true);
 
 
